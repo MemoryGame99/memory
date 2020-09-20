@@ -1,0 +1,106 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <title>Memory</title>
+</head>
+<br>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <form class="navbar-form navbar-left">
+                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-play"
+                                                                    aria-hidden="true"></span> Nowa gra
+                </button>
+            </form>
+            <ul class="nav navbar-nav">
+                <li><a href="#">Moje Statystyki</a></li>
+            </ul>
+
+            <form class="navbar-form navbar-right">
+                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-log-out"></span> Wyloguj
+                </button>
+            </form>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+
+    <!-- Intro -->
+    <div class="container-fluid bg-primary">
+        <!--Grid row-->
+        <div class="row">
+            <!--Grid column-->
+            <div class="col align-self-center text-center">
+                <p class="h1">
+                    #Memory
+                </p>
+            </div>
+            <!--Grid column-->
+        </div>
+        <!--Grid row-->
+    </div>
+</nav>
+</br>
+<div class="row top-buffer">
+    <div class="col-md-3 text-center border border-dark" th:each="card: ${cards}">
+        <a href="#"><h2 th:text="${card}">card</h2></a>
+    </div>
+</div>
+<!-- Intro -->
+</br>
+<div class="container-fluid bg-info">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-1 col-md-offset-4">
+                    <h3>42</h3>
+                </div>
+
+                <div class="col-md-1">
+                    <p class="text-uppercase font-weight-normal">Gier</p>
+                    <p><span class="glyphicon glyphicon-tower"></span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-1 col-md-offset-2">
+                    <h3>3</h3>
+                </div>
+
+                <div class="col-md-1">
+                    <p class="text-uppercase font-weight-normal">Graczy</p>
+                    <p><span class="glyphicon glyphicon-user"></span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-1 col-md-offset-2">
+                    <h3>100</h3>
+                </div>
+
+                <div class="col-md-1">
+                    <p class="text-uppercase font-weight-normal">Satysfakcji</p>
+                    <p><span class="glyphicon glyphicon-thumbs-up"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+</div>
+</body>
+</html>
