@@ -3,43 +3,11 @@ package pl.project.memorygame.engine;
 import java.util.*;
 
 public class GameService {
-    public static void main(String[] args) {
 
-        List<Integer> game = createGameField();
-        List<Integer> endGame = new ArrayList<>();
-        endGame.add(0);
-        Scanner scanner = new Scanner(System.in);
-        printBoard(game);
 
-        while (!endGame.containsAll(game) && scanner.hasNextInt()) {
-            int a = scanner.nextInt() - 1;
-            int b = scanner.nextInt() - 1;
-            findPair(game, a, b);
-            printBoard(game);
-            System.out.println();
-        }
-        System.out.println();
-        System.out.println(" you win!");
 
-    }
 
-    private int getRandomKey() {
-        Random random = new Random();
-        int a = random.nextInt(4) + 1;
-        int b = random.nextInt(4) + 1;
-        return 10 * a + b;
-    }
-
-    //FIX ME
-    private String getMemoryCardPicture() {
-
-        return "picture";
-
-    }
-
-    //FIX ME - should return List
-
-    public static List<Integer> createGameField() {
+    public static List<Integer> createValuesForGameField() {
 
         List<Integer> listOfPairs = new ArrayList<>();
         Integer value = 1;
@@ -55,7 +23,25 @@ public class GameService {
         return listOfPairs;
     }
 
-    //This will find pairs and remove/replace slots in the list
+    private static Card<Picture> createCard(int pictureNumber, int cardNumber){
+        AnimalPicture animalPicture = new AnimalPicture(pictureNumber);
+        Card<AnimalPicture> card = new Card<>(animalPicture,cardNumber);
+
+        return null;
+    }
+
+    private static List<Card<Picture>> createCardsList(List<Integer> valuesList){
+
+        List<Card<Picture>> cardsList = new ArrayList<>();
+
+        for (int i = 0; i < valuesList.size(); i++) {
+           cardsList.add(createCard(valuesList.get(i),i));
+
+        }
+        return cardsList;
+    }
+
+
     public static boolean findPair(List<Integer> listOfPairs, int firstField, int secondField) {
         if (listOfPairs.get(firstField).equals(listOfPairs.get(secondField))) {
             listOfPairs.remove(firstField);

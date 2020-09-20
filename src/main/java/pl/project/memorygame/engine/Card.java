@@ -1,21 +1,31 @@
 package pl.project.memorygame.engine;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
-public class Card<T extends Pictures> {
+@NoArgsConstructor
+public class Card<Picture> {
 
-    private T picture;
+    private Picture picture;
+    private int value;
+    private CardSide cardSide;
 
-    int value;
 
-    public Card(T picture, int value) {
+    public Card(Picture picture, int value) {
         this.picture = picture;
         this.value = value;
+        this.cardSide = CardSide.REVERSE;
     }
 
-    private enum cardSide{
-        OBVERSE,
-        REVERSE;
+    public void reverseCard() {
+        if (cardSide.equals(CardSide.REVERSE)) {
+            cardSide = CardSide.OBVERSE;
+        } else if (cardSide.equals(CardSide.OBVERSE)) {
+            cardSide = CardSide.REVERSE;
+
+        }
     }
+
 }

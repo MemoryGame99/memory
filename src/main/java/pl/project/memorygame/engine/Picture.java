@@ -3,7 +3,7 @@ package pl.project.memorygame.engine;
 import lombok.Getter;
 
 @Getter
-public class Pictures  {
+public class Picture {
 
     public String pictureName;
 
