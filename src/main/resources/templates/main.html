@@ -4,103 +4,70 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-
     <title>Memory</title>
+
+    <!-- Bootstrap 4.4 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
-<br>
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <form class="navbar-form navbar-left">
-                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-play"
-                                                                    aria-hidden="true"></span> Nowa gra
-                </button>
-            </form>
-            <ul class="nav navbar-nav">
-                <li><a href="#">Moje Statystyki</a></li>
-            </ul>
 
-            <form class="navbar-form navbar-right">
-                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-log-out"></span> Wyloguj
-                </button>
-            </form>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+<body>
+<!-- Navigation BAR -->
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Memory</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <!-- Intro -->
-    <div class="container-fluid bg-primary">
-        <!--Grid row-->
-        <div class="row">
-            <!--Grid column-->
-            <div class="col align-self-center text-center">
-                <p class="h1">
-                    #Memory
-                </p>
-            </div>
-            <!--Grid column-->
-        </div>
-        <!--Grid row-->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Start <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Moje Statystyki</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Wyloguj</button>
+        </form>
     </div>
 </nav>
-</br>
-<div class="row top-buffer">
-    <div class="col-md-3 text-center border border-dark" th:each="card: ${cards}">
-        <a href="#"><h2 th:text="${card}">card</h2></a>
-    </div>
-</div>
-<!-- Intro -->
-</br>
-<div class="container-fluid bg-info">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="row">
-                <div class="col-md-1 col-md-offset-4">
-                    <h3>42</h3>
-                </div>
 
-                <div class="col-md-1">
-                    <p class="text-uppercase font-weight-normal">Gier</p>
-                    <p><span class="glyphicon glyphicon-tower"></span></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="row">
-                <div class="col-md-1 col-md-offset-2">
-                    <h3>3</h3>
-                </div>
-
-                <div class="col-md-1">
-                    <p class="text-uppercase font-weight-normal">Graczy</p>
-                    <p><span class="glyphicon glyphicon-user"></span></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="row">
-                <div class="col-md-1 col-md-offset-2">
-                    <h3>100</h3>
-                </div>
-
-                <div class="col-md-1">
-                    <p class="text-uppercase font-weight-normal">Satysfakcji</p>
-                    <p><span class="glyphicon glyphicon-thumbs-up"></span></p>
-                </div>
-            </div>
+<!-- Memory game build in GRID -->
+<div class="container">
+    <div class="row pt-3">
+        <div class="col-md-3 text-center" th:each="card: ${cards}">
+            <a href="#">
+                <figure class="figure">
+                    <svg class="bd-placeholder-img figure-img img-fluid rounded" width="400" height="300"
+                         xmlns="http://www.w3.org/2000/svg" aria-label="Placeholder: 400x300"
+                         preserveAspectRatio="xMidYMid slice" role="img">
+                        <rect width="100%" height="100%" fill="#868e96"/>
+                        <text x="50%" y="50%" fill="#dee2e6" dominant-baseline="middle" text-anchor="middle" font-size="100px" th:text="${card}">card</text>
+                    </svg>
+                </figure>
+            </a>
         </div>
     </div>
 </div>
 
-</div>
-</div>
-</div>
+<!-- Footer TO DO -->
+
+<!-- Bootstrap scripts -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
 </body>
 </html>
