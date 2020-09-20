@@ -3,10 +3,12 @@ package pl.project.memorygame.engine;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @NoArgsConstructor
-public class Card<Picture> {
+@ToString
+public class Card {
 
     private Picture picture;
     private int value;

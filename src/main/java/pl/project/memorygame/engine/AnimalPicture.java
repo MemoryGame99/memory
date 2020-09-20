@@ -10,6 +10,10 @@ public class AnimalPicture extends Picture {
     private int value;
     private String pictureName;
 
+    public AnimalPicture(int value) {
+        super(value);
+    }
+
 
     private Map<Integer, String> pictures(){
        Map <Integer, String> cardPictures = new HashMap<>();
@@ -25,9 +29,5 @@ public class AnimalPicture extends Picture {
         return cardPictures;
     }
 
-    public AnimalPicture(int value) {
-        this.value = value;
-        pictureName = pictures().get(value);
 
-    }
 }

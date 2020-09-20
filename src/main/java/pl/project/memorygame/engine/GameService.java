@@ -5,8 +5,6 @@ import java.util.*;
 public class GameService {
 
 
-
-
     public static List<Integer> createValuesForGameField() {
 
         List<Integer> listOfPairs = new ArrayList<>();
@@ -23,19 +21,19 @@ public class GameService {
         return listOfPairs;
     }
 
-    private static Card<Picture> createCard(int pictureNumber, int cardNumber){
-        AnimalPicture animalPicture = new AnimalPicture(pictureNumber);
-        Card<AnimalPicture> card = new Card<>(animalPicture,cardNumber);
+    private static Card createCard(int pictureNumber, int cardNumber) {
+        AnimalPicture Picture = new AnimalPicture(pictureNumber);
+        Card card = new Card(Picture, cardNumber);
 
-        return null;
+        return card;
     }
 
-    private static List<Card<Picture>> createCardsList(List<Integer> valuesList){
+    public static List<Card> createCardsList(List<Integer> valuesList) {
 
-        List<Card<Picture>> cardsList = new ArrayList<>();
+        List<Card> cardsList = new ArrayList<>();
 
         for (int i = 0; i < valuesList.size(); i++) {
-           cardsList.add(createCard(valuesList.get(i),i));
+            cardsList.add(createCard(valuesList.get(i), i));
 
         }
         return cardsList;
@@ -54,16 +52,27 @@ public class GameService {
 
     }
 
-    private static void printBoard(List<Integer> list) {
+
+    public static void showPictures(List<Card> list) {
         for (int i = 0; i < list.size(); i++) {
             if (i % 4 == 0) {
                 System.out.println(" ");
             }
-            System.out.print(list.get(i)+" ");
+            System.out.print(list.get(i).getPicture().getPictureName() + " ");
 
         }
 
     }
 
+    public static void showBoard(List<Card> list) {
+        for (int i = 0; i < list.size(); i++) {
+            if (i % 4 == 0) {
+                System.out.println(" ");
+            }
+            System.out.print(list.get(i).getValue() + " ");
+        }
 
+    }
 }
+
+
