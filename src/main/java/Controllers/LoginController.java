@@ -10,8 +10,8 @@ public class LoginController {
 
     @RequestMapping
     ModelAndView loginPage(){
-        ModelAndView mnv = new ModelAndView("index");
-        mnv.addObject("index", tutajKlasaLoginDTO);
+        ModelAndView mnv = new ModelAndView("login");
+        mnv.addObject("login", tutajKlasaLoginDTO);
         return mnv;
     }
 }
