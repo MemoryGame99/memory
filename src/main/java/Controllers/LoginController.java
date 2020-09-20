@@ -11,7 +11,7 @@ public class LoginController {
     @RequestMapping
     ModelAndView loginPage(){
         ModelAndView mnv = new ModelAndView("index");
-        mnv.addObject("index", tutajKlasaLoginDTO(?));
+        mnv.addObject("index", tutajKlasaLoginDTO);
         return mnv;
     }
 }
