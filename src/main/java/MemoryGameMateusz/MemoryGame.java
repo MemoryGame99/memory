@@ -15,8 +15,8 @@ public class MemoryGame {
         reader = new Scanner(System.in);
         board = new Card[4][4];
         shuffle();
-        setCells();
-        printCells();
+        setCards();
+        printCards();
         playGame();
     }
 
@@ -41,10 +41,10 @@ public class MemoryGame {
         col2 = cardChoice / 4;
         board[row2][col2].setShowing();
 
-        printCells();
+        printCards();
     }
 
-    public void setCells() {
+    public void setCards() {
         int i = 0;
         for (int row = 0; row < board.length; row++) {
             for (int col = 0; col < board[0].length; col++) {
@@ -55,7 +55,7 @@ public class MemoryGame {
     }
 
 
-    public void printCells() {
+    public void printCards() {
         Card card;
         for (int row = 0; row < board.length; row++) {
             for (int col = 0; col < board[0].length; col++) {
@@ -79,10 +79,6 @@ public class MemoryGame {
     public int getInputAsInt() {
         String temp = reader.nextLine();
         return Integer.parseInt(temp);
-    }
-
-    public String getInputAsString() {
-        return reader.nextLine();
     }
 }
 
