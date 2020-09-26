@@ -7,11 +7,22 @@ import java.util.*;
 @Service
 public class GameService {
 
+    private Map<Integer, Game> games = new HashMap<>();
+
+    public GameService() {
+        Game game = new Game();
+        this.games.put(1, game);
+    }
+
     public static Map <UUID, Game> allGames(UUID uuid, Game game){
         Map <UUID, Game> games = new HashMap<>();
         games.put(uuid, game);
 
         return games;
+    }
+
+    public Game getGame() {
+        return games.get(1);
     }
 
 

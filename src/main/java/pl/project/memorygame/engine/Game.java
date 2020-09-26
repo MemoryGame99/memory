@@ -1,28 +1,25 @@
 package pl.project.memorygame.engine;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
 
 @Getter
-@Setter
-
 public class Game {
 
     private UUID uuid;
-    List<Card> cardsList;
+    List<Card> cards;
+    @Setter
     int moveCounter;
+    @Setter
     int pairsCounter;
 
     public Game() {
-        this.cardsList = createCardsList(16);
+        this.cards = createCardsList(16);
         this.moveCounter = 0;
         this.pairsCounter = 0;
         this.uuid = UUID.randomUUID();
@@ -37,5 +34,12 @@ public class Game {
 
         }
         return cardsList;
+    }
+
+    @Override
+    public String toString() {
+        return "Game{" +
+                "cardsList=" + cards +
+                '}';
     }
 }
