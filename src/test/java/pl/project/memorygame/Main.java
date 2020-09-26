@@ -9,9 +9,7 @@ public class Main {
     public static void main(String[] args) {
 
 
-        List<Integer> valuesForGameField = GameService.createValuesForGameField();
-        List<Card> cardsList = GameService.createCardsList(valuesForGameField);
-        GameService.showPictures(cardsList);
+
 
     }
 }

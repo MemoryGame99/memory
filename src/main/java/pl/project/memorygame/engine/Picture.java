@@ -10,7 +10,7 @@ import java.util.Map;
 @ToString
 public class Picture {
 
-    private int value;
+    private int pictureIndex;
     private String pictureName;
 
     private Map<Integer, String> pictures(){
@@ -26,9 +26,9 @@ public class Picture {
 
         return cardPictures;
     }
-    public Picture(int value) {
-        this.value = value;
-        pictureName = pictures().get(value);
+    public Picture(int pictureIndex) {
+        this.pictureIndex = pictureIndex;
+        pictureName = pictures().get(pictureIndex);
 
     }
 

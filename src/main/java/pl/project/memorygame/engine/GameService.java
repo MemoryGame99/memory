@@ -1,50 +1,17 @@
 package pl.project.memorygame.engine;
 
+import org.springframework.stereotype.Service;
+
 import java.util.*;
 
+@Service
 public class GameService {
 
+    public static Map <UUID, Game> allGames(UUID uuid, Game game){
+        Map <UUID, Game> games = new HashMap<>();
+        games.put(uuid, game);
 
-    public Game newGame(){
-        List<Integer> valuesForGameField = createValuesForGameField();
-        List<Card> cardsList = createCardsList(valuesForGameField);
-
-        return new Game(cardsList);
-    }
-
-
-    public static List<Integer> createValuesForGameField() {
-
-        List<Integer> listOfPairs = new ArrayList<>();
-        Integer value = 1;
-        for (int i = 0; i < 16; i += 2) {
-
-            listOfPairs.add(i, value);
-            listOfPairs.add(i + 1, value);
-            value++;
-
-        }
-        Collections.shuffle(listOfPairs);
-
-        return listOfPairs;
-    }
-
-    private static Card createCard(int pictureNumber, int cardNumber) {
-        AnimalPicture Picture = new AnimalPicture(pictureNumber);
-        Card card = new Card(Picture, cardNumber);
-
-        return card;
-    }
-
-    public static List<Card> createCardsList(List<Integer> valuesList) {
-
-        List<Card> cardsList = new ArrayList<>();
-
-        for (int i = 0; i < valuesList.size(); i++) {
-            cardsList.add(createCard(valuesList.get(i), i));
-
-        }
-        return cardsList;
+        return games;
     }
 
 
@@ -77,7 +44,7 @@ public class GameService {
             if (i % 4 == 0) {
                 System.out.println(" ");
             }
-            System.out.print(list.get(i).getValue() + " ");
+            System.out.print(list.get(i).getCardIndex() + " ");
         }
 
     }
