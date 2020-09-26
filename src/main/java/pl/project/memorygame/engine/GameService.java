@@ -5,6 +5,14 @@ import java.util.*;
 public class GameService {
 
 
+    public Game newGame(){
+        List<Integer> valuesForGameField = createValuesForGameField();
+        List<Card> cardsList = createCardsList(valuesForGameField);
+
+        return new Game(cardsList);
+    }
+
+
     public static List<Integer> createValuesForGameField() {
 
         List<Integer> listOfPairs = new ArrayList<>();
