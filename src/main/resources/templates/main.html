@@ -42,30 +42,45 @@
 <div class="container">
     <div class="row pt-3">
         <div class="col-md-3 text-center" th:each="card,iter : ${game.cards}">
-            <form method="POST" th:action="@{/main/} + ${iter}">
-                <button type="submit" name="submit" value="value" class="link-button">
-                    <a href="#">
-                        <figure class="figure">
-                            <svg class="bd-placeholder-img figure-img img-fluid rounded" width="400" height="300"
-                                 xmlns="http://www.w3.org/2000/svg" aria-label="Placeholder: 400x300"
-                                 preserveAspectRatio="xMidYMid slice" role="img"
-                                 th:switch="${card.cardSide.name()}"
-                            >
 
-                                <rect width="100%" height="100%" fill="#868e96"/>
-                                <text th:case="OBVERSE" x="50%" y="50%" fill="#dee2e6" dominant-baseline="middle"
-                                      text-anchor="middle" font-size="100px" th:text="${card.picture.pictureName}">game
-                                </text>
-                                <text th:case="REVERSE" x="50%" y="50%" fill="#dee2e6" dominant-baseline="middle"
-                                      text-anchor="middle" font-size="100px" th:text='R'>game
-                                </text>
-                                <!-- <button type="button" class="btn btn-primary" th:text="${card}">card</button>-->
+            <div th:switch="${card.cardSide.name()}">
+<!--                <div th:case="OBVERSE" th:text="${card.picture.pictureName}"></div>-->
+                <div th:case="OBVERSE" th:text="${card.picture.pictureName}">Odkryta</div>
+                <div th:case="REVERSE" >
+                    <form method="POST" th:action="@{/main/{cardNo}(cardNo = ${iter.index})}">
+                        <button type="submit" th:name="submit" th:value="value" class="link-button">Odkryj</button>
+                    </form>
 
-                            </svg>
-                        </figure>
-                    </a>
-                </button>
-            </form>
+                </div>
+<!--                <div th:case="REVERSE" th:text="${iter}">-->
+<!--                    <form method="POST" th:action="@{/main/} + ${iter}">-->
+<!--                        <button type="submit" name="submit" value="value" class="link-button">Submit</button>-->
+<!--                    </form>-->
+<!--                </div>-->
+            </div>
+<!--            <figure class="figure">-->
+<!--                <svg class="bd-placeholder-img figure-img img-fluid rounded" width="400" height="300"-->
+<!--                     xmlns="http://www.w3.org/2000/svg" aria-label="Placeholder: 400x300"-->
+<!--                     preserveAspectRatio="xMidYMid slice" role="img"-->
+<!--                     th:switch="${card.cardSide.name()}"-->
+<!--                >-->
+
+<!--                    <rect width="100%" height="100%" fill="#868e96"/>-->
+<!--                    <text th:case="OBVERSE" x="50%" y="50%" fill="#dee2e6" dominant-baseline="middle"-->
+<!--                          text-anchor="middle" font-size="100px" th:text="${card.picture.pictureName}">game-->
+<!--                    </text>-->
+
+<!--                    <form method="POST" th:action="@{/main/} + ${iter}">-->
+<!--                        <button type="submit" name="submit" value="value" class="link-button">-->
+<!--                            <text th:case="REVERSE" x="50%" y="50%" fill="#dee2e6" dominant-baseline="middle"-->
+<!--                                  text-anchor="middle" font-size="100px" th:text='R'>game-->
+<!--                            </text>-->
+<!--                        </button>-->
+<!--                    </form>-->
+<!--                    &lt;!&ndash; <button type="button" class="btn btn-primary" th:text="${card}">card</button>&ndash;&gt;-->
+
+<!--                </svg>-->
+<!--            </figure>-->
         </div>
     </div>
 </div>

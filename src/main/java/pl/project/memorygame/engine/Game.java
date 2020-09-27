@@ -29,37 +29,55 @@ public class Game {
     }
 
     public Game checkCard(Integer cardIndex) {
-        if(firstCardIndex == null) {
-            this.firstCardIndex = cardIndex;
-            return this;
+        if (firstCardIndex == null) {
+            reverseCard(cardIndex, 1);
         } else {
-            if(secondCardIndex == null) {
-                this.secondCardIndex = cardIndex;
+            if (secondCardIndex == null) {
+                reverseCard(cardIndex, 2);
 
                 // sprawdzamy czy takie same
                 // jezeli tak to zapisz tą informacje
-
                 // jezeli roze to zwracamy return this
+                if (checkIfThisIsPair(firstCardIndex, secondCardIndex)) {
+                    markAsCorrect(firstCardIndex, secondCardIndex);
+                }
             } else {
                 // zakryj wszystko oprócz tego indeksu + odkrytych poprawnie kart
+                reverseCard(firstCardIndex, 1);
+                reverseCard(secondCardIndex, 2);
+
+                firstCardIndex = null;
+                secondCardIndex = null;
+
+                reverseCard(cardIndex, 1);
             }
-
-
         }
-
-
-return this;
+        return this;
     }
 
+    private void markAsCorrect(Integer firstCardIndex, Integer secondCardIndex) {
 
-    //metoda otrzymuje lite kart i jeśli zostanie znaleziona para zwraca liste tych kart z ustawioną strona karty jako odkryta
-    public List<Card> findPair(int firstCardIndex, int secondCardIndex) {
-        if (!cards.get(firstCardIndex).getPicture().getPictureName()
-                .equals(cards.get(secondCardIndex).getPicture().getPictureName())) {
+    }
 
+    private void reverseCard(Integer cardIndex, Integer cardNo) {
+        if(cardNo == 1) {
+            this.firstCardIndex = cardIndex;
+        } else {
+            this.secondCardIndex = cardIndex;
+
+        }
+        cards.get(cardIndex).reverseCard();
+    }
+
+    private boolean checkIfThisIsPair(int firstCardIndex, int secondCardIndex) {
+        return cards.get(firstCardIndex).getPicture().getPictureName()
+                .equals(cards.get(secondCardIndex).getPicture().getPictureName());
+    }
+
+    private List<Card> pairsShown(int firstCardIndex, int secondCardIndex) {
+        if (checkIfThisIsPair(firstCardIndex, secondCardIndex)) {
             cards.get(firstCardIndex).reverseCard();
             cards.get(secondCardIndex).reverseCard();
-
             return cards;
         }
         return cards;
