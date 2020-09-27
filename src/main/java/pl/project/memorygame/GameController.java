@@ -3,6 +3,7 @@ package pl.project.memorygame;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 import pl.project.memorygame.engine.Card;
 import pl.project.memorygame.engine.Game;
@@ -31,11 +32,10 @@ public class GameController {
         return modelAndView;
     }
 
-    @GetMapping (value = "/main")
-    public String index(Model model){
+    @GetMapping (value = "/main/{cardIndex}")
+    public String index(Model model, @PathVariable Integer pathVariable){
 
         model.addAttribute("game", gameService.getGame() );
-
         return "main";
     }
 }

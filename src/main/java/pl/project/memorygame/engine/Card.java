@@ -21,7 +21,7 @@ public class Card {
     public Card(Picture picture, int cardIndex) {
         this.picture = picture;
         this.cardIndex = cardIndex;
-        this.cardSide = cardIndex%2==0 ? CardSide.REVERSE : CardSide.OBVERSE;
+        this.cardSide = CardSide.REVERSE;
     }
 
     public void reverseCard() {

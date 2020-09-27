@@ -41,21 +41,31 @@
 <!-- Memory game build in GRID -->
 <div class="container">
     <div class="row pt-3">
-        <div class="col-md-3 text-center" th:each="card: ${game.cards}">
-            <a href="#">
-                <figure class="figure">
-                    <svg class="bd-placeholder-img figure-img img-fluid rounded" width="400" height="300"
-                         xmlns="http://www.w3.org/2000/svg" aria-label="Placeholder: 400x300"
-                         preserveAspectRatio="xMidYMid slice" role="img"
-                         th:switch="${card.cardSide.name()}"
-                    >
-                        <rect width="100%" height="100%" fill="#868e96"/>
-                       <text th:case="OBVERSE" x="50%" y="50%" fill="#dee2e6" dominant-baseline="middle" text-anchor="middle" font-size="100px" th:text="${card.picture.pictureIndex} + 'O'">game</text>
-                       <text th:case="REVERSE" x="50%" y="50%" fill="#dee2e6" dominant-baseline="middle" text-anchor="middle" font-size="100px" th:text="${card.picture.pictureIndex} + 'R'">game</text>
-                       <!-- <button type="button" class="btn btn-primary" th:text="${card}">card</button>-->
-                    </svg>
-                </figure>
-            </a>
+        <div class="col-md-3 text-center" th:each="card,iter : ${game.cards}">
+            <form method="POST" th:action="@{/main/} + ${iter}">
+                <button type="submit" name="submit" value="value" class="link-button">
+                    <a href="#">
+                        <figure class="figure">
+                            <svg class="bd-placeholder-img figure-img img-fluid rounded" width="400" height="300"
+                                 xmlns="http://www.w3.org/2000/svg" aria-label="Placeholder: 400x300"
+                                 preserveAspectRatio="xMidYMid slice" role="img"
+                                 th:switch="${card.cardSide.name()}"
+                            >
+
+                                <rect width="100%" height="100%" fill="#868e96"/>
+                                <text th:case="OBVERSE" x="50%" y="50%" fill="#dee2e6" dominant-baseline="middle"
+                                      text-anchor="middle" font-size="100px" th:text="${card.picture.pictureName}">game
+                                </text>
+                                <text th:case="REVERSE" x="50%" y="50%" fill="#dee2e6" dominant-baseline="middle"
+                                      text-anchor="middle" font-size="100px" th:text='R'>game
+                                </text>
+                                <!-- <button type="button" class="btn btn-primary" th:text="${card}">card</button>-->
+
+                            </svg>
+                        </figure>
+                    </a>
+                </button>
+            </form>
         </div>
     </div>
 </div>
