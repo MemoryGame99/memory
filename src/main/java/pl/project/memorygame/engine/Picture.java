@@ -15,14 +15,14 @@ public class Picture {
 
     private Map<Integer, String> pictures(){
         Map <Integer, String> cardPictures = new HashMap<>();
-        cardPictures.put(1, "PICTURE1");
-        cardPictures.put(2, "PICTURE2");
-        cardPictures.put(3, "PICTURE3");
-        cardPictures.put(4, "PICTURE4");
-        cardPictures.put(5, "PICTURE5");
-        cardPictures.put(6, "PICTURE6");
-        cardPictures.put(7, "PICTURE7");
-        cardPictures.put(8, "PICTURE8");
+        cardPictures.put(1, "PICTURE 1");
+        cardPictures.put(2, "PICTURE 2");
+        cardPictures.put(3, "PICTURE 3");
+        cardPictures.put(4, "PICTURE 4");
+        cardPictures.put(5, "PICTURE 5");
+        cardPictures.put(6, "PICTURE 6");
+        cardPictures.put(7, "PICTURE 7");
+        cardPictures.put(8, "PICTURE 8");
 
         return cardPictures;
     }

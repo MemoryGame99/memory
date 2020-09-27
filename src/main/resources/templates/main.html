@@ -85,6 +85,12 @@
     </div>
 </div>
 
+<div>
+    <form method="POST" th:action="@{/main/{cardNo}(cardNo = ${iter.index})}">
+        <button type="submit" th:name="submit" th:value="value" class="link-button">Odkryj</button>
+    </form>
+</div>
+
 <!-- Footer TO DO -->
 
 <!-- Bootstrap scripts -->

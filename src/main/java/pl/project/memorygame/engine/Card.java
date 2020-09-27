@@ -2,6 +2,7 @@ package pl.project.memorygame.engine;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 import java.util.ArrayList;
@@ -18,10 +19,14 @@ public class Card {
     private int cardIndex;
     private CardSide cardSide;
 
+    @Setter
+    private boolean hasAPair;
+
     public Card(Picture picture, int cardIndex) {
         this.picture = picture;
         this.cardIndex = cardIndex;
         this.cardSide = CardSide.REVERSE;
+        this.hasAPair = false;
     }
 
     public void reverseCard() {

@@ -22,16 +22,6 @@ public class GameController {
     }
 
 
-    ModelAndView gamePage() {
-        ModelAndView modelAndView = new ModelAndView();
-        Game game = new Game();
-        List<Card> cardsList = game.getCards();
-
-
-        modelAndView.addObject("cards",cardsList );
-
-        return modelAndView;
-    }
 
     @GetMapping (value = "/main")
     public String index(Model model){

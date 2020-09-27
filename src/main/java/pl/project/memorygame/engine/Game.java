@@ -29,44 +29,53 @@ public class Game {
     }
 
     public Game checkCard(Integer cardIndex) {
-        if (firstCardIndex == null) {
-            reverseCard(cardIndex, 1);
-        } else {
-            if (secondCardIndex == null) {
-                reverseCard(cardIndex, 2);
 
-                // sprawdzamy czy takie same
-                // jezeli tak to zapisz tą informacje
-                // jezeli roze to zwracamy return this
-                if (checkIfThisIsPair(firstCardIndex, secondCardIndex)) {
-                    markAsCorrect(firstCardIndex, secondCardIndex);
-                }
-            } else {
-                // zakryj wszystko oprócz tego indeksu + odkrytych poprawnie kart
-                reverseCard(firstCardIndex, 1);
-                reverseCard(secondCardIndex, 2);
 
-                firstCardIndex = null;
-                secondCardIndex = null;
 
+            if (firstCardIndex == null) {
                 reverseCard(cardIndex, 1);
+            } else {
+                if (secondCardIndex == null) {
+                    reverseCard(cardIndex, 2);
+
+                    // sprawdzamy czy takie same
+                    // jezeli tak to zapisz tą informacje
+                    // jezeli roze to zwracamy return this
+                    if (checkIfThisIsPair(firstCardIndex, secondCardIndex)) {
+                        markAsCorrect(firstCardIndex, secondCardIndex);
+                    }
+                } else {
+                    // zakryj wszystko oprócz tego indeksu + odkrytych poprawnie kart
+                    reverseCard(firstCardIndex, 1);
+                    reverseCard(secondCardIndex, 2);
+
+                    firstCardIndex = null;
+                    secondCardIndex = null;
+
+                    reverseCard(cardIndex, 1);
+                }
             }
-        }
+
         return this;
     }
 
     private void markAsCorrect(Integer firstCardIndex, Integer secondCardIndex) {
 
+        cards.get(firstCardIndex).setHasAPair(true);
+        cards.get(secondCardIndex).setHasAPair(true);
+
     }
 
     private void reverseCard(Integer cardIndex, Integer cardNo) {
-        if(cardNo == 1) {
-            this.firstCardIndex = cardIndex;
-        } else {
-            this.secondCardIndex = cardIndex;
+        if (!cards.get(cardIndex).isHasAPair()) {
+            if (cardNo == 1) {
+                this.firstCardIndex = cardIndex;
+            } else {
+                this.secondCardIndex = cardIndex;
 
+            }
+            cards.get(cardIndex).reverseCard();
         }
-        cards.get(cardIndex).reverseCard();
     }
 
     private boolean checkIfThisIsPair(int firstCardIndex, int secondCardIndex) {
