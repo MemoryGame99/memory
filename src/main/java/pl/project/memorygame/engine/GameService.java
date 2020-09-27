@@ -7,11 +7,14 @@ import java.util.*;
 @Service
 public class GameService {
 
+    private Integer gameNumber = 1;
     private Map<Integer, Game> games = new HashMap<>();
+
 
     public GameService() {
         Game game = new Game();
-        this.games.put(1, game);
+        this.games.put(gameNumber, game);
+
     }
 
     public static Map<UUID, Game> allGames(UUID uuid, Game game) {
@@ -22,64 +25,16 @@ public class GameService {
     }
 
     public Game getGame() {
-        return games.get(1);
-    }
-
-    //metoda otrzymuje lite kart i jeśli zostanie znaleziona para zwraca liste tych kart z ustawioną strona karty jako odkryta
-    public static List<Card> findPair(List<Card> listOfPairs, int firstCardIndex, int secondCardIndex) {
-        if (!listOfPairs.get(firstCardIndex).getPicture().getPictureName()
-                .equals(listOfPairs.get(secondCardIndex).getPicture().getPictureName())) {
-
-            listOfPairs.get(firstCardIndex).reverseCard();
-            listOfPairs.get(secondCardIndex).reverseCard();
-
-            return listOfPairs;
-        }
-        return listOfPairs;
+        return games.get(gameNumber);
 
     }
 
-
-    public static void showCards(List<Card> list, int cardIndex) {
-        list.get(cardIndex).reverseCard();
-        for (int i = 0; i < list.size(); i++) {
-            if (i % 4 == 0) {
-                System.out.println(" ");
-            }
-            if (list.get(i).getCardSide() == CardSide.REVERSE) {
-                System.out.print(CardSide.REVERSE.toString() + "  ");
-            } else {
-                System.out.print(list.get(i).getPicture().getPictureName() + "  ");
-            }
-
-        }
+    public void newGame(){
+        Game game = new Game();
+        gameNumber = gameNumber+1 ;
+        this.games.put(gameNumber, game);
 
     }
-
-    public static void showCards(List<Card> list) {
-        for (int i = 0; i < list.size(); i++) {
-            if (i % 4 == 0) {
-                System.out.println(" ");
-            }
-            if (list.get(i).getCardSide() == CardSide.REVERSE) {
-                System.out.print(CardSide.REVERSE.toString() + "  ");
-            } else {
-                System.out.print(list.get(i).getPicture().getPictureName() + "  ");
-            }
-
-        }
-
-    }
-
-    public static boolean isGameOver(List<Card> cardsList) {
-        for (Card card : cardsList) {
-            if (card.getCardSide() == CardSide.REVERSE) {
-                return false;
-            }
-        }
-        return true;
-    }
-
 
 }
 

@@ -23,17 +23,25 @@ public class GameController {
 
 
 
-    @GetMapping (value = "/main")
+    @GetMapping (value = "/")
     public String index(Model model){
 
         model.addAttribute("game", gameService.getGame());
         return "main";
     }
-    @PostMapping(value = "/main/{cardIndex}")
+    @PostMapping(value = "/check/{cardIndex}")
     public String index(Model model, @PathVariable Integer cardIndex){
 
         gameService.getGame().checkCard(cardIndex);
 
-        return "redirect:/main";
+        return "redirect:/";
+    }
+
+    @GetMapping(value = "/new")
+    public String index2(Model model){
+
+        gameService.newGame();
+
+        return "redirect:/";
     }
 }

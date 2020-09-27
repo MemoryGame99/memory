@@ -30,8 +30,6 @@ public class Game {
 
     public Game checkCard(Integer cardIndex) {
 
-
-
             if (firstCardIndex == null) {
                 reverseCard(cardIndex, 1);
             } else {
@@ -101,6 +99,14 @@ public class Game {
 
         }
         return cardsList;
+    }
+    public static boolean GameOver(List<Card> cardsList) {
+        for (Card card : cardsList) {
+            if (card.getCardSide() == CardSide.REVERSE) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override

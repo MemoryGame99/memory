@@ -47,7 +47,7 @@
 <!--                <div th:case="OBVERSE" th:text="${card.picture.pictureName}"></div>-->
                 <div th:case="OBVERSE" th:text="${card.picture.pictureName}">Odkryta</div>
                 <div th:case="REVERSE" >
-                    <form method="POST" th:action="@{/main/{cardNo}(cardNo = ${iter.index})}">
+                    <form method="POST" th:action="@{/check/{cardNo}(cardNo = ${iter.index})}">
                         <button type="submit" th:name="submit" th:value="value" class="link-button">Odkryj</button>
                     </form>
 
@@ -84,10 +84,10 @@
         </div>
     </div>
 </div>
-
+<br><br>
 <div>
-    <form method="POST" th:action="@{/main/{cardNo}(cardNo = ${iter.index})}">
-        <button type="submit" th:name="submit" th:value="value" class="link-button">Odkryj</button>
+    <form method="GET" th:action="@{/new}">
+        <button type="submit" th:name="submit" th:value="value" class="link-button">Nowa Gra</button>
     </form>
 </div>
 
