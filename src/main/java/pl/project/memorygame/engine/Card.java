@@ -16,8 +16,9 @@ import java.util.List;
 public class Card {
 
     private Picture picture;
-    private int cardIndex;
+    private Integer cardIndex;
     private CardSide cardSide;
+    private String picUrl = "https://picsum.photos/id/237/310/310";
 
     @Setter
     private boolean hasAPair;

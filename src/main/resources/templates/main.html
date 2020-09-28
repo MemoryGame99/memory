@@ -9,100 +9,35 @@
 
     <title>Memory</title>
 
-    <!-- Bootstrap 4.4 -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- https://metroui.org.ua/intro.html CSS -->
+    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">
 </head>
 
 <body>
-<!-- Navigation BAR -->
-<nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Memory</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<!-- NavBar TO DO -->
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Start <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Moje Statystyki</a>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Wyloguj</button>
-        </form>
-    </div>
-</nav>
-
-<!-- Memory game build in GRID -->
+<!-- Memory game GRID -->
 <div class="container">
-    <div class="row pt-3">
-        <div class="col-md-3 text-center" th:each="card,iter : ${game.cards}">
-
+    <div class="tiles-grid">
+        <div th:each="card,iter : ${game.cards}" data-role="tile" data-size="large" class="bg-cyan">
+            <a th:href="@{/check/{cardIndex}(cardIndex=${card.cardIndex})}">
             <div th:switch="${card.cardSide.name()}">
-<!--                <div th:case="OBVERSE" th:text="${card.picture.pictureName}"></div>-->
-                <div th:case="OBVERSE" th:text="${card.picture.pictureName}">Odkryta</div>
-                <div th:case="REVERSE" >
-                    <form method="POST" th:action="@{/check/{cardNo}(cardNo = ${iter.index})}">
-                        <button type="submit" th:name="submit" th:value="value" class="link-button">Odkryj</button>
-                    </form>
-
-                </div>
-<!--                <div th:case="REVERSE" th:text="${iter}">-->
-<!--                    <form method="POST" th:action="@{/main/} + ${iter}">-->
-<!--                        <button type="submit" name="submit" value="value" class="link-button">Submit</button>-->
-<!--                    </form>-->
-<!--                </div>-->
+                <span th:case="REVERSE">
+                    <img src="https://picsum.photos/id/237/310/310?grayscale&blur=2">
+                </span>
+                <span th:case="OBVERSE">
+                    <img th:src="@{${card.picUrl}}"/>
+                </span>
             </div>
-<!--            <figure class="figure">-->
-<!--                <svg class="bd-placeholder-img figure-img img-fluid rounded" width="400" height="300"-->
-<!--                     xmlns="http://www.w3.org/2000/svg" aria-label="Placeholder: 400x300"-->
-<!--                     preserveAspectRatio="xMidYMid slice" role="img"-->
-<!--                     th:switch="${card.cardSide.name()}"-->
-<!--                >-->
-
-<!--                    <rect width="100%" height="100%" fill="#868e96"/>-->
-<!--                    <text th:case="OBVERSE" x="50%" y="50%" fill="#dee2e6" dominant-baseline="middle"-->
-<!--                          text-anchor="middle" font-size="100px" th:text="${card.picture.pictureName}">game-->
-<!--                    </text>-->
-
-<!--                    <form method="POST" th:action="@{/main/} + ${iter}">-->
-<!--                        <button type="submit" name="submit" value="value" class="link-button">-->
-<!--                            <text th:case="REVERSE" x="50%" y="50%" fill="#dee2e6" dominant-baseline="middle"-->
-<!--                                  text-anchor="middle" font-size="100px" th:text='R'>game-->
-<!--                            </text>-->
-<!--                        </button>-->
-<!--                    </form>-->
-<!--                    &lt;!&ndash; <button type="button" class="btn btn-primary" th:text="${card}">card</button>&ndash;&gt;-->
-
-<!--                </svg>-->
-<!--            </figure>-->
+            </a>
         </div>
     </div>
-</div>
-<br><br>
-<div>
-    <form method="GET" th:action="@{/new}">
-        <button type="submit" th:name="submit" th:value="value" class="link-button">Nowa Gra</button>
-    </form>
 </div>
 
 <!-- Footer TO DO -->
 
-<!-- Bootstrap scripts -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
+<!-- https://metroui.org.ua/intro.html Scripts -->
+<script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
 
 </body>
 </html>

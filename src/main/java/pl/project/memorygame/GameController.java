@@ -29,8 +29,8 @@ public class GameController {
         model.addAttribute("game", gameService.getGame());
         return "main";
     }
-    @PostMapping(value = "/check/{cardIndex}")
-    public String index(Model model, @PathVariable Integer cardIndex){
+    @GetMapping(value = "/check/{cardIndex}")
+    public String index(@PathVariable Integer cardIndex){
 
         gameService.getGame().checkCard(cardIndex);
 
