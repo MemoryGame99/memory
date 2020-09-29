@@ -22,26 +22,35 @@ public class GameController {
     }
 
 
+    @GetMapping(value = "/")
+    public String mainGame(Model model) {
 
-    @GetMapping (value = "/")
-    public String index(Model model){
+        model.addAttribute("gameCards", gameService.game.getCards());
+        model.addAttribute("newTurn", gameService.game.getNewTurn());
+        model.addAttribute("victory", gameService.game.isEnded());
+        model.addAttribute("moves", gameService.game.getTourCounter());
 
-        model.addAttribute("game", gameService.getGame());
         return "main";
     }
-    @GetMapping(value = "/check/{cardIndex}")
-    public String index(@PathVariable Integer cardIndex){
 
-        gameService.getGame().checkCard(cardIndex);
+    @PostMapping(value = "/check/{cardNo}")
+    public String nextReveal(@PathVariable Integer cardNo) {
+
+        gameService.playNextMove(cardNo);
 
         return "redirect:/";
     }
 
-    @GetMapping(value = "/new")
-    public String index2(Model model){
+    @PostMapping(value = "/newTurn")
+    public String newTurn() {
+        gameService.checkCards();
+        return "redirect:/";
+    }
 
+    @PostMapping(value = "/newGame")
+    public String newGame() {
         gameService.newGame();
-
         return "redirect:/";
     }
+
 }

@@ -19,20 +19,32 @@
 <!-- Memory game GRID -->
 <div class="container">
     <div class="tiles-grid">
-        <div th:each="card,iter : ${game.cards}" data-role="tile" data-size="large" class="bg-cyan">
-            <a th:href="@{/check/{cardIndex}(cardIndex=${card.cardIndex})}">
-            <div th:switch="${card.cardSide.name()}">
-                <span th:case="REVERSE">
-                    <img src="https://picsum.photos/id/237/310/310?grayscale&blur=2">
-                </span>
-                <span th:case="OBVERSE">
-                    <img th:src="@{${card.picUrl}}"/>
-                </span>
-            </div>
-            </a>
+        <div th:each="card, iter : ${gameCards}" data-role="tile" data-size="large" class="bg-cyan">
+            <!--            <a th:href="@{/check/{pictureId}(pictureId=${iter.index})}">-->
+            <!--            <span th:if="${!card.isRevealed()}" class="mif-eye icon"></span>-->
+            <span th:if="${!card.isRevealed()}" class="mif-eye icon"></span>
+            <form th:if="${!card.isRevealed()} and ${!newTurn}" method="POST"
+                  th:action="@{/check/{cardNo}(cardNo = ${iter.index})}">
+                <button type="submit" th:name="submit" th:value="value" class="button large yellow w-100">Odkryj
+                </button>
+            </form>
+            <img th:if="${card.isRevealed()}" th:src="@{${card.getPicture().getLink()}}"/>
+            <!--            </a>-->
         </div>
     </div>
+    <form th:if="${newTurn} and ${!victory}" method="POST" th:action="@{/newTurn}">
+        <button type="submit" th:name="submit" th:value="value"
+                class="button dark large pos-fixed pos-bottom-center w-100">Następna tura
+        </button>
+    </form>
+    <form th:if="${victory}" method="POST" th:action="@{/newGame}">
+        <button type="submit" th:name="submit" th:value="value"
+                class="button yellow large pos-fixed pos-bottom-center w-100">
+            Gratulacje, wygrana w <span th:text="${moves}"></span> turach. Kliknij aby rozpocząć nową grę.
+        </button>
+    </form>
 </div>
+
 
 <!-- Footer TO DO -->
 

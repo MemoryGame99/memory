@@ -11,10 +11,6 @@ public class GameTest {
     @Test
     void firstTest() {
 
-        Game g = new Game();
-
-        assertEquals(true, true);
-
     }
 
 }
