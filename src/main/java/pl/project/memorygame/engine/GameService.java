@@ -2,6 +2,11 @@ package pl.project.memorygame.engine;
 
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
 import java.util.*;
 
 @Service
@@ -23,11 +28,33 @@ public class GameService {
         return myResultList;
     }
 
-    public static List<Integer> generateRandomPicIds(Integer picListSize, int min, int max) {
+    public static List<Integer> generateRandomPicIds(Integer picListSize, int min, int max){
 
-        List<Integer> pictureIdList = new ArrayList<>(picListSize);
+        List<Integer> pictureIdList = new ArrayList<>();
         for (int i = 0; i < picListSize; i++) {
-            pictureIdList.add(new Random().nextInt(max - min) + min);
+            int random = new Random().nextInt(max - min) + min;
+            int status = 0;
+            if (pictureIdList.contains(random)){
+                picListSize++;
+                continue;
+            }
+            try {
+                URL url = new URL("https://picsum.photos/id/" + random + "/300/200");
+                HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                con.setRequestMethod("GET");
+
+                status = con.getResponseCode();
+                con.disconnect();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            if (status != 200) {
+                picListSize++;
+                continue;
+            }
+            pictureIdList.add(random);
         }
         return pictureIdList;
     }
@@ -55,6 +82,17 @@ public class GameService {
     public void newGame() {
         game = new Game(16);
     }
+
+    public static List<String> generateRandomPicLinks(Integer listSize) {
+        List<String> myResultList = new ArrayList<>(listSize);
+
+        for (Integer i : GameService.generateRandomPicIds(listSize, 1, 1000)) {
+            myResultList.add("https://picsum.photos/id/" + i + "/600/400");
+        }
+
+        return myResultList;
+    }
+
 }
 
 

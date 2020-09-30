@@ -1,0 +1,36 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Memory</title>
+
+    <!-- https://metroui.org.ua/intro.html CSS -->
+    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">
+</head>
+
+<div class="container-fluid">
+    <form method="POST" th:action="@{/newGame}">
+        <button type="submit" th:name="submit" th:value="value"
+                class="button yellow large w-100 text-center">Kliknij aby rozpocząć nową grę
+        </button>
+    </form>
+</div>
+<br>
+<div class="container">
+    <div data-role="lightbox d-flex justify-content-center">
+        <span  th:each="picture : ${randomPics}">
+        <img th:src="@{${picture}}">
+        </span>
+    </div>
+</div>
+
+<!-- https://metroui.org.ua/intro.html Scripts -->
+<script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
+
+</body>
+</html>

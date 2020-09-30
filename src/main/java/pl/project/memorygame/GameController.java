@@ -21,8 +21,14 @@ public class GameController {
         this.gameService = gameService;
     }
 
-
     @GetMapping(value = "/")
+    public String start(Model model) {
+        List<String> randomPicLinks = GameService.generateRandomPicLinks(4);
+        model.addAttribute("randomPics", randomPicLinks);
+        return "start";
+    }
+
+    @GetMapping(value = "/main")
     public String mainGame(Model model) {
 
         model.addAttribute("gameCards", gameService.game.getCards());
@@ -38,19 +44,19 @@ public class GameController {
 
         gameService.playNextMove(cardNo);
 
-        return "redirect:/";
+        return "redirect:/main";
     }
 
     @PostMapping(value = "/newTurn")
     public String newTurn() {
         gameService.checkCards();
-        return "redirect:/";
+        return "redirect:/main";
     }
 
     @PostMapping(value = "/newGame")
     public String newGame() {
         gameService.newGame();
-        return "redirect:/";
+        return "redirect:/main";
     }
 
 }
