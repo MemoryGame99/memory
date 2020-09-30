@@ -17,7 +17,13 @@
 <!-- NavBar TO DO -->
 <ul class="t-menu vertical open bg-cyan fg-white">
     <li><a href="/main"><span class="icon mif-home"></span></a></li>
-    <li><a href="/newGame"><span class="icon mif-replay"></span></a></li>
+    <li><a href="#" class="dropdown-toggle"><span class="icon mif-play"></span></a>
+        <ul class="t-menu bg-pink fg-white" data-role="dropdown">
+            <li><a href="/newGame?size=8"><span>4x2</span></a></li>
+            <li><a href="/newGame?size=12"><span>4x3</span></a></li>
+            <li><a href="/newGame?size=16"><span>4x4</span></a></li>
+        </ul>
+    </li>
 </ul>
 
 <!-- Memory game GRID -->

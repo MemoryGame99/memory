@@ -83,6 +83,10 @@ public class GameService {
         game = new Game(16);
     }
 
+    public void newGame(Integer size) {
+        game = new Game(size);
+    }
+
     public static List<String> generateRandomPicLinks(Integer listSize) {
         List<String> myResultList = new ArrayList<>(listSize);
 

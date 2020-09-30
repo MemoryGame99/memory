@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import pl.project.memorygame.engine.Card;
 import pl.project.memorygame.engine.Game;
@@ -60,8 +61,11 @@ public class GameController {
     }
 
     @GetMapping(value = "/newGame")
-    public String newGameGet() {
-        gameService.newGame();
+    public String newGameGet(@RequestParam("size") Integer size) {
+        if (size != 8 && size != 12 && size != 16) {
+            return "start";
+        }
+        gameService.newGame(size);
         return "redirect:/main";
     }
 
