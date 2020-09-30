@@ -15,13 +15,15 @@
 
 <body>
 <!-- NavBar TO DO -->
+<ul class="t-menu vertical open bg-cyan fg-white">
+    <li><a href="/main"><span class="icon mif-home"></span></a></li>
+    <li><a href="/newGame"><span class="icon mif-replay"></span></a></li>
+</ul>
 
 <!-- Memory game GRID -->
 <div class="container">
     <div class="tiles-grid">
         <div th:each="card, iter : ${gameCards}" data-role="tile" data-size="large" class="bg-cyan">
-            <!--            <a th:href="@{/check/{pictureId}(pictureId=${iter.index})}">-->
-            <!--            <span th:if="${!card.isRevealed()}" class="mif-eye icon"></span>-->
             <span th:if="${!card.isRevealed()}" class="mif-eye icon"></span>
             <form th:if="${!card.isRevealed()} and ${!newTurn}" method="POST"
                   th:action="@{/check/{cardNo}(cardNo = ${iter.index})}">
@@ -44,7 +46,6 @@
         </button>
     </form>
 </div>
-
 
 <!-- Footer TO DO -->
 

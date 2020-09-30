@@ -59,4 +59,10 @@ public class GameController {
         return "redirect:/main";
     }
 
+    @GetMapping(value = "/newGame")
+    public String newGameGet() {
+        gameService.newGame();
+        return "redirect:/main";
+    }
+
 }
