@@ -1,0 +1,33 @@
+* [33mafb3942[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;32menginetask3[m[33m)[m dzialajaca gra wersja 1.0
+* [33mda5ef87[m pierwsza dzialajaca wersja z odslananiem kart, bez możliwości zagrania w nowa grę
+* [33m50706d8[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/enginetask3[m[33m, [m[1;31morigin/HEAD[m[33m)[m zmiany w klasach i połączenie z frontem. Karty odkryte i zakryte. brak jeszcze oznaczenia znalezienia pary i zakończenia gry
+* [33m844f555[m dzialajaca gra v1.0 od strony backendu, pierwsze proby pokaczenia z frontem
+* [33m523e744[m Polaczenie z Game Controllerem i wyswietlanie testowe zakryta/odkryta karta
+* [33m695aa68[m przesunieto metody z Game Service do Game i Card, dodano Game Controller
+*   [33m0db4326[m Merge branch 'master' into enginetask3
+[32m|[m[33m\[m  
+[32m|[m * [33meab9cb2[m Update na bootstrap 4.4
+[32m|[m *   [33m3a7b8a9[m Merge pull request #6 from MemoryGame99/FrontMain
+[32m|[m [34m|[m[35m\[m  
+[32m|[m [34m|[m * [33me8205b3[m[33m ([m[1;31morigin/FrontMain[m[33m, [m[1;32mFrontMain[m[33m)[m Front Main - podstawowy widok strony plus kontroler wyświetlający 16 pól gry pobieranych ze zdefiniowanej tablicy.
+[32m|[m [34m|[m[34m/[m  
+* [34m|[m [33m019c0e3[m add Game class
+* [34m|[m [33m4a8aacc[m uproszczenie układu klas
+[34m|[m[34m/[m  
+* [33m8b4a87e[m[33m ([m[1;32menginetask2[m[33m)[m poprawki i zmiany w klasach. Usuniecie zbednych metod, dodanie funkcjionalnosci w klasach - CardSide i AnimaPicture
+* [33m624a688[m[33m ([m[1;32mgameengine[m[33m)[m commit przed mergem do mastera z drobnymi zmianami w klasach
+* [33m093a49a[m[33m ([m[1;31morigin/gameengine[m[33m)[m działajaca wersja gry z usuwaniem takich samych liczb w liscie
+* [33m369514d[m pierwszy szkic silnika gry
+[35m|[m * [33m90b1bfa[m[33m ([m[1;31morigin/controller[m[33m)[m memory game by mateusz
+[35m|[m * [33m34cb966[m memory game by mateusz
+[35m|[m * [33m2e8ab04[m index.html made
+[35m|[m * [33mee836f1[m Update LoginController.java
+[35m|[m * [33m5d5f2dc[m[33m ([m[1;32mcontroller[m[33m)[m index controller
+[35m|[m * [33mf4bc591[m login controller
+[35m|[m * [33ma5b89bc[m login controller
+[35m|[m[35m/[m  
+[35m|[m * [33m63d48a1[m[33m ([m[1;31morigin/login[m[33m)[m add login and registration
+[35m|[m[35m/[m  
+* [33mb2435cf[m change gitignore
+* [33m9209420[m initial commit
+* [33m014e022[m Initial commit
