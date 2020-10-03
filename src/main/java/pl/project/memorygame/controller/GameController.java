@@ -21,7 +21,7 @@ public class GameController {
     public GameController(GameService gameService) {
         this.gameService = gameService;
     }
-    
+
     @GetMapping (value = "/")
     public String index(Model model, HttpSession session){
 
