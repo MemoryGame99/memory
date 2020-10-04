@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import pl.project.memorygame.engine.Card;
 import pl.project.memorygame.engine.Game;
@@ -21,27 +22,51 @@ public class GameController {
         this.gameService = gameService;
     }
 
+    @GetMapping(value = "/")
+    public String start(Model model) {
+        List<String> randomPicLinks = GameService.generateRandomPicLinks(4);
+        model.addAttribute("randomPics", randomPicLinks);
+        return "start";
+    }
 
+    @GetMapping(value = "/main")
+    public String mainGame(Model model) {
 
-    @GetMapping (value = "/")
-    public String index(Model model){
+        model.addAttribute("gameCards", gameService.game.getCards());
+        model.addAttribute("newTurn", gameService.game.getNewTurn());
+        model.addAttribute("victory", gameService.game.isEnded());
+        model.addAttribute("moves", gameService.game.getTourCounter());
 
-        model.addAttribute("game", gameService.getGame());
         return "main";
     }
-    @GetMapping(value = "/check/{cardIndex}")
-    public String index(@PathVariable Integer cardIndex){
 
-        gameService.getGame().checkCard(cardIndex);
+    @PostMapping(value = "/check/{cardNo}")
+    public String nextReveal(@PathVariable Integer cardNo) {
 
-        return "redirect:/";
+        gameService.playNextMove(cardNo);
+
+        return "redirect:/main";
     }
 
-    @GetMapping(value = "/new")
-    public String index2(Model model){
+    @PostMapping(value = "/newTurn")
+    public String newTurn() {
+        gameService.checkCards();
+        return "redirect:/main";
+    }
 
+    @PostMapping(value = "/newGame")
+    public String newGame() {
         gameService.newGame();
-
-        return "redirect:/";
+        return "redirect:/main";
     }
+
+    @GetMapping(value = "/newGame")
+    public String newGameGet(@RequestParam("size") Integer size) {
+        if (size != 8 && size != 12 && size != 16) {
+            return "start";
+        }
+        gameService.newGame(size);
+        return "redirect:/main";
+    }
+
 }
